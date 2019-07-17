@@ -27,17 +27,21 @@ class FastTraveler:
         self.issue_type = self.issue.fields.issuetype.name
         self.assignee = self.issue.fields.assignee
         self.description = self.issue.fields.description
-        self.locations = self.getAddresses("test")
+        self.locations = self.getAddresses()
         self.created_time = self.issue.fields.created
         self.raw = self.issue.raw # raw json of jira issue
 
     # return a list of object values for ip address that holds ip info
-    def getAddresses(self, description):
-        ip_address_objects = []
-        # do stuff
-        # and get both ip addresses from description
+    def getAddresses(self):
+        ip_addresses = []
+        ip_address_objects = [] # list of IP objects
 
-        ip_addresses = ['131.204.144.159']
+        description = self.issue.fields.description  # grab description
+        for line in description.splitlines():  # loop through all lines in description
+            if (line.startswith('First IP:') or line.startswith(('Next IP:'))):  # find line that starts with it provides
+                for word in line.split():  # split line into array of words
+                    if (word.startswith('1')): # if it is an ip address add to list
+                        ip_addresses.append(word)
         for ip in ip_addresses:  # loop through all ip addresses returned
             location_info = IP(ip)  # create object from ip address
             ip_address_objects.append(location_info)  # append to list
@@ -63,6 +67,7 @@ class FastTraveler:
     def delete(self):
         self.issue.delete()
 
+    #
     def addParticipants(self):
         usernames = []
         description = self.issue.fields.description # grab description

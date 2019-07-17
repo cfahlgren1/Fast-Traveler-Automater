@@ -13,13 +13,12 @@ class IP:
         self.city = details.city
         self.latitude = details.latitude
         self.longitude = details.longitude
-        self.hostname = details.hostname
         self.country = details.country_name
 
     # string method for string representation of object
     def __str__(self):
-        return "ip: " + self.ip_address + "\ncity: " + self.city + "\nhostname: " \
-               + self.hostname + "\nlatitude: " + self.latitude + "\nlongitude: " \
+        return "ip: " + self.ip_address + "\ncity: " + self.city \
+               + "\nlatitude: " + self.latitude + "\nlongitude: " \
                + self.longitude + "\ncountry: " + self.country
 
     # for use when printing from list

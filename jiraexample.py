@@ -1,6 +1,7 @@
 from FastTraveler import FastTraveler
-import json
 
 jira_issue = FastTraveler('ASOC-1813') # example with jira object with all locations
+print (jira_issue) # print jira object
 
-jira_issue.addParticipants()
+for location in jira_issue.locations: # loop through locations
+    print (str(location) + "\n")
