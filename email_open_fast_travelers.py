@@ -21,3 +21,5 @@ for issue in jira.search_issues('issuetype = "Fast Traveler" AND status = Open',
     fast_traveler.assign('cdf0022')
     fast_traveler.email()
     print ("Emailed Issue: " + issue.key)
+
+print ("Finished!")

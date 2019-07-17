@@ -18,15 +18,15 @@ class FastTraveler:
 
     # initialize variables from jira
     def __init__(self, issue_name):
-        issue = self.jira.issue(issue_name)
-        self.key = issue.key
-        self.report_display_name = issue.fields.reporter.displayName
-        self.reporter_name = issue.fields.reporter.name
-        self.issue_type = issue.fields.issuetype.name
-        self.assignee = issue.fields.assignee
-        self.description = issue.fields.description
+        self.issue = self.jira.issue(issue_name)
+        self.key = self.issue.key
+        self.report_display_name = self.issue.fields.reporter.displayName
+        self.reporter_name = self.issue.fields.reporter.name
+        self.issue_type = self.issue.fields.issuetype.name
+        self.assignee = self.issue.fields.assignee
+        self.description = self.issue.fields.description
         self.locations = self.getAddresses("test")
-        self.created_time = issue.fields.created
+        self.created_time = self.issue.fields.created
 
     # return a list of object values for ip address that holds ip info
     def getAddresses(self, description):
@@ -56,8 +56,8 @@ class FastTraveler:
     def email(self):
         self.jira.transition_issue(self.key, '951')
 
-    def test(self):
-        pass
+    def delete(self):
+        self.issue.delete()
 
     def search(self):
         for issue in self.jira.search_issues('issuetype = "Fast Traveler" AND status = Open', maxResults=50):
