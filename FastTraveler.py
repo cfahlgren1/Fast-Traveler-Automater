@@ -1,7 +1,9 @@
 from jira import JIRA
 from IP import IP
+from participants import getDictionary
 from dotenv import load_dotenv
 import os, urllib3
+
 
 class FastTraveler:
     try:
@@ -27,6 +29,7 @@ class FastTraveler:
         self.description = self.issue.fields.description
         self.locations = self.getAddresses("test")
         self.created_time = self.issue.fields.created
+        self.raw = self.issue.raw # raw json of jira issue
 
     # return a list of object values for ip address that holds ip info
     def getAddresses(self, description):
@@ -56,12 +59,28 @@ class FastTraveler:
     def email(self):
         self.jira.transition_issue(self.key, '951')
 
+    # delete jira issue
     def delete(self):
         self.issue.delete()
 
+    def addParticipants(self):
+        usernames = []
+        description = self.issue.fields.description # grab description
+        for line in description.splitlines(): # loop through all lines in description
+            if (line.startswith('IT Providers:')): # find line that starts with it provides
+                for word in line.split(): # split line into array of words
+                    if (word.endswith('@auburn.edu') or word.endswith('@auburn.edu,')):
+                        word.replace(',', '')
+                        usernames.append(word.replace('@auburn.edu', ''))
+
+        if (getDictionary(usernames) != False): # make sure there are emails to add
+            self.issue.update(fields={'customfield_10000': getDictionary(usernames)})
+
+    # run search in jira
     def search(self):
+        # ex. find all open fast travelers and return as string
         for issue in self.jira.search_issues('issuetype = "Fast Traveler" AND status = Open', maxResults=50):
-            print('{} \t {}'.format(issue.key, issue.fields.created))
+            return ('{} \t {}'.format(issue.key, issue.fields.created))
 
     # string method for string representation of object
     def __str__(self):
