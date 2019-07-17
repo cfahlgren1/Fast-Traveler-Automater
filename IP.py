@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import ipinfo, os
 
-class IP():
+class IP:
     load_dotenv()  # setup use for getting environment variables
 
     # connect to ipinfo api to get location info from ip address
