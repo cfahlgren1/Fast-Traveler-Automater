@@ -41,11 +41,37 @@ class FastTraveler:
 
         return ip_address_objects
 
+    # assign jira issue to specified author
+    def assign(self, author):
+        try:
+            self.jira.assign_issue(self.jira.issue(self.key), author)
+        except:
+            print ('error: could not assign specified user: ' + author)
+
+
+    def resolve(self):
+        pass
+
+    # send email to customer
+    def email(self):
+        self.jira.transition_issue(self.key, '951')
+
+    def test(self):
+        pass
+
+    def search(self):
+        for issue in self.jira.search_issues('issuetype = "Fast Traveler" AND status = Open', maxResults=50):
+            print('{} \t {}'.format(issue.key, issue.fields.created))
+
     # string method for string representation of object
     def __str__(self):
         return "key: " + str(self.key) + "\nreporter: "  + str(self.report_display_name) \
                + "\ncreated: " + str(self.created_time) + "\nissue_type: " + str(self.issue_type) \
                + "\nassignee: " + str(self.assignee) + "\ndescription: " + str(self.description)
+
+    # for use when printing from list
+    def __repr__(self):
+        return str(self)
 
 
 

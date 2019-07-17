@@ -10,9 +10,20 @@ class IP:
     def __init__(self, ip_address):
         self.ip_address = ip_address
         details = self.handler.getDetails(ip_address)
-        city = details.city
-        latitude = details.latitude
-        longitude = details.longitude
-        hostname = details.hostname
-        country = details.country_name
+        self.city = details.city
+        self.latitude = details.latitude
+        self.longitude = details.longitude
+        self.hostname = details.hostname
+        self.country = details.country_name
+
+    # string method for string representation of object
+    def __str__(self):
+        return "ip: " + self.ip_address + "\ncity: " + self.city + "\nhostname: " \
+               + self.hostname + "\nlatitude: " + self.latitude + "\nlongitude: " \
+               + self.longitude + "\ncountry: " + self.country
+
+    # for use when printing from list
+    def __repr__(self):
+        return str(self)
+
 
