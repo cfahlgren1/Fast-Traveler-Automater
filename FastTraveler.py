@@ -48,9 +48,9 @@ class FastTraveler:
         except:
             print ('error: could not assign specified user: ' + author)
 
-
+    # resolve fast traveler
     def resolve(self):
-        pass
+        self.jira.transition_issue(self.key, '51')
 
     # send email to customer
     def email(self):
