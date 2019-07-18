@@ -77,7 +77,7 @@ class FastTraveler:
         except:
             print('error could not delete issue')
 
-    #
+    # add participants from description to the participants field in jira
     def addParticipants(self):
         usernames = []
         description = self.issue.fields.description # grab description
