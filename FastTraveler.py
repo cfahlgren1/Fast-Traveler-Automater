@@ -85,17 +85,11 @@ class FastTraveler:
             if (line.startswith('IT Providers:')): # find line that starts with it provides
                 for word in line.split(): # split line into array of words
                     if (word.endswith('@auburn.edu') or word.endswith('@auburn.edu,')):
-                        word.replace(',', '')
+                        word = word.replace(',', '')
                         usernames.append(word.replace('@auburn.edu', ''))
 
         if (getDictionary(usernames) != False): # make sure there are emails to add
             self.issue.update(fields={'customfield_10000': getDictionary(usernames)})
-
-    # run search in jira
-    def search(self):
-        # ex. find all open fast travelers and return as string
-        for issue in self.jira.search_issues('issuetype = "Fast Traveler" AND status = Open', maxResults=50):
-            return ('{} \t {}'.format(issue.key, issue.fields.created))
 
     # string method for string representation of object
     def __str__(self):
