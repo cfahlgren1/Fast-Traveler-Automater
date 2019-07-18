@@ -79,17 +79,22 @@ class FastTraveler:
 
     # add participants from description to the participants field in jira
     def addParticipants(self):
-        usernames = []
-        description = self.issue.fields.description # grab description
-        for line in description.splitlines(): # loop through all lines in description
-            if (line.startswith('IT Providers:')): # find line that starts with it provides
-                for word in line.split(): # split line into array of words
-                    if (word.endswith('@auburn.edu') or word.endswith('@auburn.edu,')):
-                        word = word.replace(',', '')
-                        usernames.append(word.replace('@auburn.edu', ''))
+        if (self.issue_type == 'Fast Traveler'):
+            usernames = []
+            description = self.issue.fields.description # grab description
+            for line in description.splitlines(): # loop through all lines in description
+                if (line.startswith('IT Providers:')): # find line that starts with it provides
+                    for word in line.split(): # split line into array of words
+                        if (word.endswith('@auburn.edu') or word.endswith('@auburn.edu,')):
+                            word = word.replace(',', '')
+                            usernames.append(word.replace('@auburn.edu', ''))
 
-        if (getDictionary(usernames) != False): # make sure there are emails to add
-            self.issue.update(fields={'customfield_10000': getDictionary(usernames)})
+            if (getDictionary(usernames) != False): # make sure there are emails to add
+                self.issue.update(fields={'customfield_10000': getDictionary(usernames)})
+        else:
+            print ('issue is not fast traveler')
+
+
 
     # string method for string representation of object
     def __str__(self):
