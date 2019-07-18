@@ -4,7 +4,8 @@ from participants import getDictionary
 from dotenv import load_dotenv
 import os, urllib3
 
-
+# Class that Holds Fast Traveler Information
+# @author Caleb Fahlgren
 class FastTraveler:
     try:
         load_dotenv()  # setup use for getting environment variables
@@ -57,15 +58,24 @@ class FastTraveler:
 
     # resolve fast traveler
     def resolve(self):
-        self.jira.transition_issue(self.key, '51')
+        try:
+            self.jira.transition_issue(self.key, '51')
+        except:
+            print('error could not resolve issue')
 
     # send email to customer
     def email(self):
-        self.jira.transition_issue(self.key, '951')
+        try:
+            self.jira.transition_issue(self.key, '951')
+        except:
+            print('error could not transition issue')
 
     # delete jira issue
     def delete(self):
-        self.issue.delete()
+        try:
+            self.issue.delete()
+        except:
+            print('error could not delete issue')
 
     #
     def addParticipants(self):
