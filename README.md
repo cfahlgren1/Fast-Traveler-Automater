@@ -1,6 +1,6 @@
 # Jira Fast Traveler
 
-Python classes that hold Fast Traveler Issues in Jira as objects. With these objects you can fun a variety of methods that perform different actions such as:
+Python classes that hold Fast Traveler Issues in Jira as objects. With these objects you can run a variety of methods that perform different actions such as:
 
 - Emailing a Fast Traveler to Participants and Customers
 - Assign ticket to user
@@ -21,7 +21,7 @@ Python classes that hold Fast Traveler Issues in Jira as objects. With these obj
 
 A script built on top of the Fast Traveler classes that automates assigning issue to user, adding request participants, and emailing users.
 
-# Example Code
+# Example Code that works on Fast Traveler
 edit .env field to include JIRA_USERNAME and JIRA_PASSWORD and SERVER_ADDRESS
 
     from FastTraveler import FastTraveler
