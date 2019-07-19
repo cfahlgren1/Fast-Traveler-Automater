@@ -56,6 +56,7 @@ class FastTraveler:
     def assign(self, author):
         try:
             self.jira.assign_issue(self.jira.issue(self.key), author)
+            self.logging_db.write(self.key, 'assigned')  # note that an issue has been resolved
         except:
             print ('error: could not assign specified user: ' + author)
 
@@ -79,6 +80,7 @@ class FastTraveler:
     def delete(self):
         try:
             self.issue.delete()
+            self.logging_db.write(self.key, 'deleted')  # note that an issue has been resolved
         except:
             print('error could not delete issue')
 

@@ -17,12 +17,11 @@ except:
     print("jira connection error occurred, please verify env variables")
 
 x = 0 # incrementer
-for issue in jira.search_issues('issuetype = "Fast Traveler" AND status = "Waiting for customer"', maxResults=40):
+for issue in jira.search_issues('issuetype = "Fast Traveler" AND status = "Waiting for Customer"', maxResults=200):
     x += 1
     fast = FastTraveler(issue.key)
-    if (fast.created_time < dt.strptime("7-17-2019", "%m-%d-%Y").date()): # check for fast travelers before 7/18/2019
-        fast.resolve()
-        print ("Resolved: " + str(fast.key))
+    if (fast.created_time < dt.strptime("6-01-2019", "%m-%d-%Y").date()): # check for fast travelers before 7/18/2019
+        print ("Resolved: " + str(fast.key) + "\t" + str(fast.created_time))
 
     fast.close()
 
