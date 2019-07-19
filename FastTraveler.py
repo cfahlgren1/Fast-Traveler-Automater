@@ -2,6 +2,7 @@ from jira import JIRA
 from IP import IP
 from participants import getDictionary
 from dotenv import load_dotenv
+from datetime import datetime as dt
 import os, urllib3
 
 # Class that Holds Fast Traveler Information
@@ -29,7 +30,7 @@ class FastTraveler:
         self.assignee = self.issue.fields.assignee
         self.description = self.issue.fields.description
         self.locations = self.getAddresses()
-        self.created_time = self.issue.fields.created
+        self.created_time = dt.strptime(str(self.issue.fields.created)[:10], "%Y-%m-%d").date() # save string as python date datetime obj
         self.raw = self.issue.raw # raw json of jira issue
 
     # return a list of object values for ip address that holds ip info
