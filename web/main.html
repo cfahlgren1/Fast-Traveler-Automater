@@ -15,7 +15,7 @@
     <link href="css/style.css" rel="stylesheet">
 
   </head>
-  <body>
+  <body onload = "setResolved()">
     <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -59,9 +59,9 @@
 				<br/>
 				<br/>
 				<br/>
-			</div> <span class="badge badge-info">Total Issues Emailed by Jira Automation System:</span>
+			</div> <span id="emailed" class="badge badge-info">Total Issues Emailed by Jira Automation System:</span>
 			<br/>
-			<span class="badge badge-info">Total Issues Resolved by Jira Automation System: <script>eel.get_resolved();</script></span>
+			<span id="resolved" class="badge badge-info">Total Issues Resolved by Jira Automation System: <script>eel.get_resolved();</script></span>
 		</div>
 	</div>
 </div>
@@ -73,6 +73,15 @@
 	function resolve(){
 		eel.resolve();
 		alert('Resolving Stale Issues');
+	}
+	async function setResolved(){
+		let n = await eel.get_resolved()();
+		document.getElementById("resolved").innerHTML = "Total Issues Resolved by Jira Automation System: " + n;
+		setEmailed();
+	}
+	async function setEmailed(){
+		let n = await eel.get_emailed()();
+		document.getElementById("emailed").innerHTML = "Total Issues Emailed by Jira Automation System: " + n;
 	}
 	</script>
     <script src="js/jquery.min.js"></script>
