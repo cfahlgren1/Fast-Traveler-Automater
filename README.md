@@ -16,6 +16,8 @@ Python classes that hold Fast Traveler Issues in Jira as objects. With these obj
 	- Created Time
 	-  Raw JSON of all fields
 
+# Local Web App run on Chrome using Eel
+![Jira Automation](https://i.ibb.co/g9bNNLG/Capture.png)
 
 # Fast Traveler Emailer
 

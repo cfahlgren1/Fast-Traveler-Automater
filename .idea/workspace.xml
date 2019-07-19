@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5efe67ea-6d92-4c00-827c-5bd01e133e94" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/main.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,11 +25,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+            <state relative-caret-position="228">
+              <caret line="40" column="251" selection-start-line="40" selection-start-column="251" selection-end-line="40" selection-end-column="251" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="456">
+                <caret line="31" column="34" lean-forward="true" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -57,6 +69,7 @@
       <find>col-md-6</find>
       <find>jira</find>
       <find>button</find>
+      <find>patst</find>
     </findStrings>
     <replaceStrings>
       <replace>os.getenv</replace>
@@ -80,7 +93,6 @@
         <option value="$PROJECT_DIR$/search.py" />
         <option value="$PROJECT_DIR$/participants.py" />
         <option value="$PROJECT_DIR$/jiraexample.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/docs/requirements.txt" />
         <option value="$PROJECT_DIR$/examples/test_db.py" />
         <option value="$PROJECT_DIR$/.env" />
@@ -96,6 +108,7 @@
         <option value="$PROJECT_DIR$/jira_resolve.py" />
         <option value="$PROJECT_DIR$/server.py" />
         <option value="$PROJECT_DIR$/web/main.html" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -132,17 +145,17 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\cdf0022\PycharmProjects\JiraConnectorExample" />
+      <recent name="C:\Users\cdf0022\PycharmProjects\JiraConnectorExample\web" />
+      <recent name="C:\Users\cdf0022\PycharmProjects\JiraConnectorExample\scripts" />
+      <recent name="C:\Users\cdf0022\PycharmProjects\JiraConnectorExample\examples" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\cdf0022\PycharmProjects\JiraConnectorExample\web\css" />
       <recent name="C:\Users\cdf0022\PycharmProjects\JiraConnectorExample\web\fonts" />
       <recent name="C:\Users\cdf0022\PycharmProjects\JiraConnectorExample\web\js" />
       <recent name="C:\Users\cdf0022\PycharmProjects\JiraConnectorExample\docs" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\cdf0022\PycharmProjects\JiraConnectorExample\web" />
-      <recent name="C:\Users\cdf0022\PycharmProjects\JiraConnectorExample" />
-      <recent name="C:\Users\cdf0022\PycharmProjects\JiraConnectorExample\scripts" />
-      <recent name="C:\Users\cdf0022\PycharmProjects\JiraConnectorExample\examples" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -356,14 +369,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt" />
     <entry file="file://$PROJECT_DIR$/README.md" />
-    <entry file="file://$PROJECT_DIR$/docs/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/ntpath.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
@@ -500,8 +505,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+        <state relative-caret-position="228">
+          <caret line="40" column="251" selection-start-line="40" selection-start-column="251" selection-end-line="40" selection-end-column="251" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="456">
+            <caret line="31" column="34" lean-forward="true" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
