@@ -1,5 +1,6 @@
 from jira import JIRA
 from IP import IP
+from MongoCRUD import MongoCRUD
 from participants import getDictionary
 from dotenv import load_dotenv
 from datetime import datetime as dt
@@ -22,6 +23,7 @@ class FastTraveler:
 
     # initialize variables from jira
     def __init__(self, issue_name):
+        self.logging_db = MongoCRUD()
         self.issue = self.jira.issue(issue_name)
         self.key = self.issue.key
         self.report_display_name = self.issue.fields.reporter.displayName
@@ -60,16 +62,18 @@ class FastTraveler:
     # resolve fast traveler
     def resolve(self):
         try:
-            self.jira.transition_issue(self.key, '51')
-        except:
-            print('error could not resolve issue')
+            self.jira.transition_issue(self.issue, '761')
+            self.logging_db.write(self.key, 'resolved')# note that an issue has been resolved
+        except Exception as e:
+            print(str(e))
 
     # send email to customer
     def email(self):
         try:
             self.jira.transition_issue(self.key, '951')
-        except:
-            print('error could not transition issue')
+            self.logging_db.write(self.key, 'emailed')  # note that an issue has been resolved
+        except Exception as e:
+            print (str(e))
 
     # delete jira issue
     def delete(self):
@@ -95,7 +99,9 @@ class FastTraveler:
         else:
             print ('issue is not fast traveler')
 
-
+    # close database
+    def close(self):
+        self.logging_db.close()
 
     # string method for string representation of object
     def __str__(self):

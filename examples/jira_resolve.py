@@ -23,4 +23,6 @@ for issue in jira.search_issues('issuetype = "Fast Traveler" AND status = "Waiti
     if (fast.created_time < dt.strptime("7-17-2019", "%m-%d-%Y").date()): # check for fast travelers before 7/18/2019
         print(str(fast.created_time) + "\t" + str(fast.key))
 
+    fast.close()
+
 print ("Finished " + str(x) + " Fast Travelers!")
