@@ -26,8 +26,21 @@ class MongoCRUD:
         }
         self.my_collection.insert_one(rec) # write to database
 
-    def read(self):
-        pass
+    # get all resolved document count from db
+    def get_resolved(self):
+        return(self.my_collection.count_documents({'action' : 'resolved'}))
+
+    # get all emailed document count from db
+    def get_emailed(self):
+        return(self.my_collection.count_documents({'action':'emailed'}))
+
+    # get all deleted document count from db
+    def get_deleted(self):
+        return(self.my_collection.count_documents({'action':'deleted'}))
+
+    # get all assigned document count from db
+    def get_assigned(self):
+        return(self.my_collection.count_documents({'action':'deleted'}))
 
     # close db connection
     def close(self):

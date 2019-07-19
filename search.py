@@ -1,5 +1,4 @@
 from jira import JIRA
-from FastTraveler import FastTraveler
 from dotenv import load_dotenv
 import os, urllib3
 

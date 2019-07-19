@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <script type="text/javascript" src="/eel.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Jira Automation</title>
+
+    <meta name="description" content="Jira Automation System">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="nav">
+				<li class="nav-item">
+					<a class="nav-link active" target="_blank" href="https://socsd.auburn.edu:8443/projects/ASOC/queues/custom/1">Jira</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" target="_blank"  href="https://splunkauthsh.netmgt.auburn.edu:8000/">Splunk</a>
+				</li>
+			</ul>
+			<div class="page-header">
+				<h1>
+					Auburn Cyber Security - SOC
+				</h1>
+			</div>
+			<br/>
+			<h2>
+				Jira Automation
+			</h2>
+			<br/>
+			<p>
+				Use the buttons below to perform actions on Jira Issues. The Email button will automatically assign to user, add IT Providers, and send email to participants and users. The Resolve Button will automatically resolve issues that are patst a certain date.
+			</p>
+			<p>
+				<a class="btn" href="#"></a>
+			</p>
+			<div class="row">
+				<div class="col-md-6">
+
+					<button type="button" onclick="email()" class="btn btn-success btn-md">
+						Email_Fast_Travelers
+					</button>
+				</div>
+				<div class="col-md-6">
+
+					<button type="button" onclick="resolve()" class="btn btn-success btn-md">
+						Resolve_Issues
+					</button>
+				</div>
+				<br/>
+				<br/>
+				<br/>
+			</div> <span class="badge badge-info">Total Issues Emailed by Jira Automation System:</span>
+			<br/>
+			<span class="badge badge-info">Total Issues Resolved by Jira Automation System: <script>eel.get_resolved();</script></span>
+		</div>
+	</div>
+</div>
+	<script>
+	function email(){
+		eel.email_open_fast_travelers();
+		alert('Emailing Open Fast Travelers');
+	}
+	function resolve(){
+		eel.resolve();
+		alert('Resolving Stale Issues');
+	}
+	</script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
