@@ -27,12 +27,12 @@ class FastTraveler:
         self.issue = self.jira.issue(issue_name)
         self.key = self.issue.key
         self.report_display_name = self.issue.fields.reporter.displayName
-        self.reporter_name = self.issue.fields.reporter.name
+        self.reporter = self.issue.fields.reporter.name
         self.issue_type = self.issue.fields.issuetype.name
         self.assignee = self.issue.fields.assignee
         self.description = self.issue.fields.description
         self.locations = self.getAddresses()
-        self.created_time = dt.strptime(str(self.issue.fields.created)[:10], "%Y-%m-%d").date() # save string as python date datetime obj
+        self.created_date = dt.strptime(str(self.issue.fields.created)[:10], "%Y-%m-%d").date() # save string as python date datetime obj
         self.raw = self.issue.raw # raw json of jira issue
 
     # return a list of object values for ip address that holds ip info
@@ -42,9 +42,9 @@ class FastTraveler:
 
         description = self.issue.fields.description  # grab description
         for line in description.splitlines():  # loop through all lines in description
-            if (line.startswith('First IP:') or line.startswith(('Next IP:'))):  # find line that starts with it provides
+            if line.startswith('First IP:') or line.startswith(('Next IP:')):  # find line that starts with it provides
                 for word in line.split():  # split line into array of words
-                    if (word.startswith('1')): # if it is an ip address add to list
+                    if word.startswith('1') or word.startswith('2'): # if it is an ip address add to list
                         ip_addresses.append(word)
         for ip in ip_addresses:  # loop through all ip addresses returned
             location_info = IP(ip)  # create object from ip address
@@ -107,8 +107,8 @@ class FastTraveler:
 
     # string method for string representation of object
     def __str__(self):
-        return "key: " + str(self.key) + "\nreporter: "  + str(self.report_display_name) \
-               + "\ncreated: " + str(self.created_time) + "\nissue_type: " + str(self.issue_type) \
+        return "key: " + str(self.key) + "\nreporter: "  + str(self.reporter) \
+               + "\ncreated: " + str(self.created_date) + "\nissue_type: " + str(self.issue_type) \
                + "\nassignee: " + str(self.assignee) + "\ndescription: " + str(self.description)
 
     # for use when printing from list
