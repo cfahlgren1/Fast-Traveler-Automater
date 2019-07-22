@@ -19,9 +19,9 @@ x = 0 # incrementer
 for issue in jira.search_issues('issuetype = "Fast Traveler" AND status = "Waiting for Customer"', maxResults=200):
     x += 1
     fast = FastTraveler(issue.key)
-    if (fast.created_time < datetime.datetime.now().date() - datetime.timedelta(days = 2)): # check for fast travelers before two days ago
+    if (fast.created_date < datetime.datetime.now().date() - datetime.timedelta(days = 2)): # check for fast travelers before two days ago
         fast.resolve()
-        print ("Resolved: " + str(fast.key) + "\t" + str(fast.created_time))
+        print ("Resolved: " + str(fast.key) + "\t" + str(fast.created_date))
     fast.close()
 
 print ("Finished " + str(x) + " Fast Travelers!")

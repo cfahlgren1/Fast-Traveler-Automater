@@ -23,7 +23,7 @@ class FastTraveler:
 
     # initialize variables from jira
     def __init__(self, issue_name):
-        self.logging_db = MongoCRUD()
+        self.logging_db = MongoCRUD('logging')
         self.issue = self.jira.issue(issue_name)
         self.key = self.issue.key
         self.report_display_name = self.issue.fields.reporter.displayName
@@ -48,10 +48,12 @@ class FastTraveler:
                     if word[0].isdigit(): # if it is an ip address add to list
                         ip_addresses.append(word)
         for ip in ip_addresses:  # loop through all ip addresses returned
-            location_info = IP(ip)  # create object from ip address
-            self.locations.append([float(location_info.longitude), float(location_info.latitude)])
-            ip_address_objects.append(location_info)  # append to list
-
+            try:
+                location_info = IP(ip)  # create object from ip address
+                self.locations.append([float(location_info.longitude), float(location_info.latitude)])
+                ip_address_objects.append(location_info)  # append to list
+            except Exception as e:
+                location_info = "n/a"
         return ip_address_objects
 
     # assign jira issue to specified author
