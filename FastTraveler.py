@@ -44,7 +44,7 @@ class FastTraveler:
         for line in description.splitlines():  # loop through all lines in description
             if line.startswith('First IP:') or line.startswith(('Next IP:')):  # find line that starts with it provides
                 for word in line.split():  # split line into array of words
-                    if word.startswith('1') or word.startswith('2'): # if it is an ip address add to list
+                    if word[0].isdigit(): # if it is an ip address add to list
                         ip_addresses.append(word)
         for ip in ip_addresses:  # loop through all ip addresses returned
             location_info = IP(ip)  # create object from ip address
