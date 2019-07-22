@@ -31,7 +31,8 @@ class FastTraveler:
         self.issue_type = self.issue.fields.issuetype.name
         self.assignee = self.issue.fields.assignee
         self.description = self.issue.fields.description
-        self.locations = self.getAddresses()
+        self.locations = []
+        self.locationInfo = self.getAddresses()
         self.created_date = dt.strptime(str(self.issue.fields.created)[:10], "%Y-%m-%d").date() # save string as python date datetime obj
         self.raw = self.issue.raw # raw json of jira issue
 
@@ -48,6 +49,7 @@ class FastTraveler:
                         ip_addresses.append(word)
         for ip in ip_addresses:  # loop through all ip addresses returned
             location_info = IP(ip)  # create object from ip address
+            self.locations.append([float(location_info.longitude), float(location_info.latitude)])
             ip_address_objects.append(location_info)  # append to list
 
         return ip_address_objects
@@ -86,17 +88,17 @@ class FastTraveler:
 
     # add participants from description to the participants field in jira
     def addParticipants(self):
-        if (self.issue_type == 'Fast Traveler'):
+        if self.issue_type == 'Fast Traveler':
             usernames = []
             description = self.issue.fields.description # grab description
             for line in description.splitlines(): # loop through all lines in description
-                if (line.startswith('IT Providers:')): # find line that starts with it provides
+                if line.startswith('IT Providers:'): # find line that starts with it provides
                     for word in line.split(): # split line into array of words
-                        if (word.endswith('@auburn.edu') or word.endswith('@auburn.edu,')):
+                        if word.endswith('@auburn.edu') or word.endswith('@auburn.edu,'):
                             word = word.replace(',', '')
                             usernames.append(word.replace('@auburn.edu', ''))
 
-            if (getDictionary(usernames) != False): # make sure there are emails to add
+            if getDictionary(usernames) != False: # make sure there are emails to add
                 self.issue.update(fields={'customfield_10000': getDictionary(usernames)})
         else:
             print ('issue is not fast traveler')
