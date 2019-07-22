@@ -51,24 +51,24 @@ def resolve():
     for issue in jira.search_issues('issuetype = "Fast Traveler" AND status = "Waiting for Customer"', maxResults=200):
         x += 1
         fast = FastTraveler(issue.key)
-        if (fast.created_time < datetime.datetime.now().date() - datetime.timedelta(
+        if (fast.created_date < datetime.datetime.now().date() - datetime.timedelta(
                 days=2)):  # check for fast travelers before two days ago
             fast.resolve()
-            print("Resolved: " + str(fast.key) + "\t" + str(fast.created_time))
+            print("Resolved: " + str(fast.key) + "\t" + str(fast.created_date))
         fast.close()
 
     print("Finished " + str(x) + " Fast Travelers!")
 
 @eel.expose
 def get_resolved():
-    mongo = MongoCRUD()
+    mongo = MongoCRUD('logging')
     resolved = mongo.get_resolved()
     mongo.close()
     return resolved
 
 @eel.expose
 def get_emailed():
-    mongo = MongoCRUD()
+    mongo = MongoCRUD('logging')
     emails = mongo.get_emailed()
     mongo.close()
     return emails
