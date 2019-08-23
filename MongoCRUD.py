@@ -41,7 +41,7 @@ class MongoCRUD:
         }
         self.my_collection.insert_one(rec) # write to database
 
-    def write(self, user, key, ft_type, date, description, coordinates):
+    def write_ft(self, user, key, ft_type, date, description, coordinates):
         rec = {
             'user' : str(user),
             'key' : str(key),

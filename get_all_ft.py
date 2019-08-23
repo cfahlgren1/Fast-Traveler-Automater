@@ -31,7 +31,7 @@ for issue in jira.search_issues('issuetype = "Fast Traveler"', maxResults=2000):
             date = fast_traveler.created_date
             description = fast_traveler.description
             print (str(x) + "\tAdded: " + str(user) + "\t" + str(key) + "\t" + str(date) + "\t" + str(coordinates))
-            mongo.write(user, key, ft_type, date, description, coordinates)
+            mongo.write_ft(user, key, ft_type, date, description, coordinates)
 
 mongo.close()
 print (x)

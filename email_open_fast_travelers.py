@@ -1,9 +1,8 @@
 from jira import JIRA
 from FastTraveler import FastTraveler
 from dotenv import load_dotenv
-import os, urllib3, eel
+import os, urllib3
 
-@eel.expose
 def email_open_fast_travelers():
     try:
         load_dotenv()  # setup use for getting environment variables
@@ -27,3 +26,5 @@ def email_open_fast_travelers():
         print ("Emailed Issue: " + issue.key)
 
     return x
+
+email_open_fast_travelers()

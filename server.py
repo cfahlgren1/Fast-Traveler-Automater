@@ -2,7 +2,8 @@ from jira import JIRA
 from FastTraveler import FastTraveler
 from MongoCRUD import MongoCRUD
 from dotenv import load_dotenv
-import datetime, os, urllib3, eel
+import datetime, os, urllib3
+import eel
 
 eel.init('web')
 
@@ -22,7 +23,7 @@ def email_open_fast_travelers():
         print("jira connection error occurred, please verify env variables")
 
     x = 0 # incrementer
-    for issue in jira.search_issues('issuetype = "Fast Traveler" AND status = Open', maxResults=50):
+    for issue in jira.search_issues('(issuetype = "Fast Traveler" or issuetype = "Duo Fraud" or issuetype = "Malware") AND status = Open', maxResults=50):
         x += 1
         fast_traveler = FastTraveler(issue.key)
         fast_traveler.assign('cdf0022')
